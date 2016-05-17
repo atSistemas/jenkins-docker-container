@@ -31,7 +31,6 @@
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
         <url>https://github.com/jorgeb1980/ClassFinder.git</url>
-        <credentialsId>be5064fe-453f-481f-b2eb-e91691a14d97</credentialsId>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
