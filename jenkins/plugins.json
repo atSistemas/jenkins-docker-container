@@ -1,0 +1,234 @@
+[
+  {
+    "shortName": "ant",
+    "version": "1.2"
+  },
+  {
+    "shortName": "antisamy-markup-formatter",
+    "version": "1.1"
+  },
+  {
+    "shortName": "any-buildstep",
+    "version": "0.1"
+  },
+  {
+    "shortName": "batch-task",
+    "version": "1.17"
+  },
+  {
+    "shortName": "build-flow-plugin",
+    "version": "0.19"
+  },
+  {
+    "shortName": "build-timeout",
+    "version": "1.15.1"
+  },
+  {
+    "shortName": "buildgraph-view",
+    "version": "1.3"
+  },
+  {
+    "shortName": "cobertura",
+    "version": "1.9.7"
+  },
+  {
+    "shortName": "conditional-buildstep",
+    "version": "1.3.3"
+  },
+  {
+    "shortName": "credentials",
+    "version": "1.24"
+  },
+  {
+    "shortName": "custom-tools-plugin",
+    "version": "0.4.4"
+  },
+  {
+    "shortName": "cvs",
+    "version": "2.11"
+  },
+  {
+    "shortName": "dashboard-view",
+    "version": "2.9.6"
+  },
+  {
+    "shortName": "email-ext",
+    "version": "2.40.5"
+  },
+  {
+    "shortName": "extended-choice-parameter",
+    "version": "0.55"
+  },
+  {
+    "shortName": "external-monitor-job",
+    "version": "1.4"
+  },
+  {
+    "shortName": "flexible-publish",
+    "version": "0.15.2"
+  },
+  {
+    "shortName": "git-client",
+    "version": "1.19.0"
+  },
+  {
+    "shortName": "git-server",
+    "version": "1.6"
+  },
+  {
+    "shortName": "git",
+    "version": "2.4.0"
+  },
+  {
+    "shortName": "gradle",
+    "version": "1.24"
+  },
+  {
+    "shortName": "greenballs",
+    "version": "1.15"
+  },
+  {
+    "shortName": "groovy-postbuild",
+    "version": "2.2.2"
+  },
+  {
+    "shortName": "groovy",
+    "version": "1.27"
+  },
+  {
+    "shortName": "javadoc",
+    "version": "1.1"
+  },
+  {
+    "shortName": "jobConfigHistory",
+    "version": "2.12"
+  },
+  {
+    "shortName": "jquery",
+    "version": "1.11.2-0"
+  },
+  {
+    "shortName": "junit",
+    "version": "1.10"
+  },
+  {
+    "shortName": "ldap",
+    "version": "1.11"
+  },
+  {
+    "shortName": "mailer",
+    "version": "1.16"
+  },
+  {
+    "shortName": "mapdb-api",
+    "version": "1.0.6.0"
+  },
+  {
+    "shortName": "mask-passwords",
+    "version": "2.8"
+  },
+  {
+    "shortName": "matrix-auth",
+    "version": "1.1"
+  },
+  {
+    "shortName": "matrix-project",
+    "version": "1.4.1"
+  },
+  {
+    "shortName": "maven-plugin",
+    "version": "2.7.1"
+  },
+  {
+    "shortName": "nested-view",
+    "version": "1.14"
+  },
+  {
+    "shortName": "nodelabelparameter",
+    "version": "1.7"
+  },
+  {
+    "shortName": "pam-auth",
+    "version": "1.1"
+  },
+  {
+    "shortName": "parameterized-trigger",
+    "version": "2.29"
+  },
+  {
+    "shortName": "publish-over-ssh",
+    "version": "1.13"
+  },
+  {
+    "shortName": "release",
+    "version": "2.5.4"
+  },
+  {
+    "shortName": "repository-connector",
+    "version": "1.1.2"
+  },
+  {
+    "shortName": "run-condition",
+    "version": "1.0"
+  },
+  {
+    "shortName": "scm-api",
+    "version": "1.0"
+  },
+  {
+    "shortName": "script-security",
+    "version": "1.15"
+  },
+  {
+    "shortName": "scriptler",
+    "version": "2.9"
+  },
+  {
+    "shortName": "simple-theme-plugin",
+    "version": "0.3"
+  },
+  {
+    "shortName": "ssh-credentials",
+    "version": "1.11"
+  },
+  {
+    "shortName": "ssh-slaves",
+    "version": "1.9"
+  },
+  {
+    "shortName": "subversion",
+    "version": "1.54"
+  },
+  {
+    "shortName": "swarm",
+    "version": "2.0"
+  },
+  {
+    "shortName": "template-project",
+    "version": "1.5.1"
+  },
+  {
+    "shortName": "token-macro",
+    "version": "1.12"
+  },
+  {
+    "shortName": "translation",
+    "version": "1.10"
+  },
+  {
+    "shortName": "uno-choice",
+    "version": "1.2"
+  },
+  {
+    "shortName": "windows-slaves",
+    "version": "1.0"
+  },
+  {
+    "shortName": "ws-cleanup",
+    "version": "0.28"
+  },
+  {
+    "shortName": "xvfb",
+    "version": "1.1.2"
+  }
+]

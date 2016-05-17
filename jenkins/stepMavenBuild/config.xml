@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>parentWorkspace</name>
+          <description></description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <org.jvnet.jenkins.plugins.nodelabelparameter.NodeParameterDefinition plugin="nodelabelparameter@1.7">
+          <name>node</name>
+          <description></description>
+          <allowedSlaves/>
+          <defaultSlaves/>
+          <triggerIfResult>multiSelectionDisallowed</triggerIfResult>
+          <allowMultiNodeSelection>false</allowMultiNodeSelection>
+          <triggerConcurrentBuilds>false</triggerConcurrentBuilds>
+          <ignoreOfflineNodes>false</ignoreOfflineNodes>
+          <nodeEligibility class="org.jvnet.jenkins.plugins.nodelabelparameter.node.AllNodeEligibility"/>
+        </org.jvnet.jenkins.plugins.nodelabelparameter.NodeParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+    <de.pellepelster.jenkins.walldisplay.WallDisplayJobProperty plugin="jenkinswalldisplay@0.6.30"/>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>true</concurrentBuild>
+  <customWorkspace>$parentWorkspace</customWorkspace>
+  <builders>
+    <hudson.tasks.Maven>
+      <targets>clean install</targets>
+      <pom>ClassFinder/pom.xml</pom>
+      <usePrivateRepository>false</usePrivateRepository>
+      <settings class="jenkins.mvn.DefaultSettingsProvider"/>
+      <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
+    </hudson.tasks.Maven>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

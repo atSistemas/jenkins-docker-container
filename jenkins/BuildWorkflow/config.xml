@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<com.cloudbees.plugins.flow.BuildFlow plugin="build-flow-plugin@0.16-SNAPSHOT-DCARO">
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.TextParameterDefinition>
+          <name>jobsList</name>
+          <description></description>
+          <defaultValue>stepGitDownload
+stepMavenBuild</defaultValue>
+        </hudson.model.TextParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+    <de.pellepelster.jenkins.walldisplay.WallDisplayJobProperty plugin="jenkinswalldisplay@0.6.30"/>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>true</concurrentBuild>
+  <builders/>
+  <publishers/>
+  <buildWrappers/>
+  <icon/>
+  <dsl>// Función que nos permite referirnos al nodo levantado en el contenedor Docker
+def getNode(String handle) {
+   // Se puede sacar a una configuración externa
+   long msecWait = 500;
+   int triesLeft = 10;
+   def lookForNode = { String pattern -&gt;
+      def ret = null;
+      for (slave in hudson.model.Hudson.instance.slaves) {
+         if (slave.getNodeName().startsWith(pattern)){
+            ret = slave;
+         }
+      }
+      return ret;
+   }
+   def ret = null;
+   // lo intenta $triesLeft veces, separadas cada una por periodos de
+   //    de $msecWait milisegundos.  Pasado este tiempo, asume que el
+   //    esclavo swarm no ha conseguido levantarse.
+   while (ret == null &amp;&amp; triesLeft &gt; 0) {
+      ret = lookForNode(handle);
+      if (ret == null) {
+         triesLeft--;
+         Thread.sleep(msecWait);
+      }
+   }
+   return ret;
+}
+
+long timestamp = new Date().getTime();
+String handle = &quot;swarm_slave_$timestamp&quot;;
+String parentWorkspace = &quot;/jenkins/BuildWorkflow$timestamp&quot;;
+try {
+   // Levantar el contenedor
+   build(&quot;runDockerContainer&quot;, handle: &quot;$handle&quot; )
+   def swarmNode = getNode(handle);
+   if (swarmNode == null) throw new Exception(&quot;El esclavo no ha arrancado&quot;);
+   println &quot;Nodo levantado en contenedor Docker: $swarmNode&quot;;
+   // Lanzar los jobs en la lista contra el nodo indicado
+   def jobs = params[&quot;jobsList&quot;].split(&quot;\n&quot;);
+   
+   jobs.each { String job -&gt;
+      println &quot;********** EJECUTANDO $job&quot;;
+      // Implementación lo más sencilla posible.
+      // Se puede enriquecer con gestión de errores bloqueante o no bloqueante,
+      //    parametrización de cada job de la lista con variables, ejecución en 
+      //    paralelo de jobs concretos, etc.
+      Map jobParams = [:]
+      jobParams.put(&quot;parentWorkspace&quot;, parentWorkspace);
+      jobParams.put(&quot;node&quot;, swarmNode.getNodeName());
+      build(jobParams, job);
+   }
+}
+finally {
+  // Detener el contenedor
+  build(&quot;stopDockerContainer&quot;, handle: &quot;$handle&quot; )
+}</dsl>
+  <buildNeedsWorkspace>false</buildNeedsWorkspace>
+</com.cloudbees.plugins.flow.BuildFlow>
